@@ -16,6 +16,19 @@ class TindakLanjut_model extends CI_Model
 		return $this->db->get()->result();
 	}
 
+	// Ambil semua petugas
+	public function getAllPetugas()
+	{
+		return $this->db->get('tbl_petugas')->result();
+	}
+
+	// Ambil semua laporan
+	public function getAllLaporan()
+	{
+		return $this->db->get('tbl_laporan')->result();
+	}
+
+
 
 	// Simpan data baru
 	public function save()
@@ -33,7 +46,7 @@ class TindakLanjut_model extends CI_Model
 	// Ambil 1 data berdasarkan ID
 	public function getById($id)
 	{
-		$this->db->select('tl.*, p.nama_petugas, l.judul_laporan');
+		$this->db->select('tl.*, p.nama_petugas, l.jenis_kejahatan');
 		$this->db->from("$this->_table tl");
 		$this->db->join('tbl_petugas p', 'p.id_petugas = tl.id_petugas', 'left');
 		$this->db->join('tbl_laporan l', 'l.id_laporan = tl.id_laporan', 'left');
@@ -52,6 +65,7 @@ class TindakLanjut_model extends CI_Model
 			'id_petugas' => htmlspecialchars($this->input->post('id_petugas'), true),
 			'status' => $this->input->post('status')
 		);
+		log_message('debug', 'Update ID: ' . $id);
 		return $this->db->set($data)->where($this->primary, $id)->update($this->_table);
 	}
 

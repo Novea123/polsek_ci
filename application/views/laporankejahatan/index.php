@@ -21,13 +21,15 @@
 			<?php endif; ?>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table table-striped table-bordered table-hover" id="tabelkelas" width="100%" cellspacing="0">
+					<table class="table table-striped table-bordered table-hover text-center" id="tabelkelas" width="100%" cellspacing="0">
 						<thead>
 							<tr>
 								<th>No.</th>
 								<th>Jenis Kejahatan</th>
-								<th>Lokasi</th>
-								<th>Tanggal</th>
+								<th>Lokasi Kejadian</th>
+								<th>Tanggal Kejadian</th>
+								<th>Waktu Kejadian</th>
+								<th>Deskripsi</th>
 								<th>Status</th>
 								<th>Action</th>
 							</tr>
@@ -41,6 +43,8 @@
 							<td>$laporan->jenis_kejahatan</td>
 							<td>" . substr($laporan->lokasi_kejadian, 0, 30) . "...</td>
 							<td>" . date('d/m/Y', strtotime($laporan->tanggal_kejadian)) . "</td>
+							<td>$laporan->waktu_kejadian</td>
+							<td>" . substr($laporan->deskripsi_kejadian, 0, 30) . "...</td>
 							<td>$laporan->status</td>																					
 							<td>
 							<div>

@@ -9,15 +9,16 @@
 			<div class="card-body">
 				<form action="<?php echo site_url('tindaklanjut/edit') ?>" method="post">
 					<!-- ID tersembunyi -->
-					<input type="hidden" name="id" value="<?= $tindaklanjut->id_tindak_lanjut; ?>" />
+					<input type="hidden" name="id_tindak_lanjut" value="<?= $tindaklanjut->id_tindak_lanjut; ?>" />
+
 
 					<div class="mb-3">
 						<label for="id_laporan">LAPORAN <code>*</code></label>
 						<select name="id_laporan" class="form-control chosen-select" required>
-							<option value="<?= $tindaklanjut->id_laporan ?>" selected><?= $tindaklanjut->judul_laporan ?></option>
+							<option value="<?= $tindaklanjut->id_laporan ?>" selected><?= $tindaklanjut->jenis_kejahatan ?></option>
 							<?php foreach ($laporan as $l) : ?>
 								<?php if ($l->id_laporan != $tindaklanjut->id_laporan) : ?>
-									<option value="<?= $l->id_laporan ?>"><?= $l->judul_laporan ?></option>
+									<option value="<?= $l->id_laporan ?>"><?= $l->jenis_kejahatan ?></option>
 								<?php endif; ?>
 							<?php endforeach; ?>
 						</select>
@@ -43,11 +44,6 @@
 					<div class="mb-3">
 						<label for="jenis_tindakan">JENIS TINDAKAN <code>*</code></label>
 						<input class="form-control" type="text" name="jenis_tindakan" value="<?= $tindaklanjut->jenis_tindakan ?>" placeholder="Contoh: Penyelidikan, Penangkapan, dll" required />
-					</div>
-
-					<div class="mb-3">
-						<label for="hasil_tindakan">HASIL TINDAKAN</label>
-						<textarea class="form-control" name="hasil_tindakan" rows="3" required><?= $tindaklanjut->hasil_tindakan ?></textarea>
 					</div>
 
 					<div class="mb-3">

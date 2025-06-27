@@ -37,8 +37,8 @@
 					</div>
 
 					<div class="mb-3">
-						<label for="tti">TTI <code>*</code></label>
-						<input class="form-control" type="date" name="tti" value="<?= $tahanan->tti; ?>" required />
+						<label for="tti">TANGGAL LAHIR <code>*</code></label>
+						<input class="form-control" type="date" name="tanggal_lahir" value="<?= $tahanan->tanggal_lahir; ?>" required />
 					</div>
 
 					<div class="mb-3">

@@ -23,11 +23,14 @@ class TindakLanjut extends CI_Controller
 
 	public function add() // Form tambah data
 	{
-		
+
 		$data = array(
 			'title' => 'Tambah Tindak Lanjut Kasus',
+			'laporan' => $this->db->get('tbl_laporan')->result(),
+			'petugas' => $this->db->get('tbl_petugas')->result(),
 			'content' => 'tindaklanjut/add_form'
 		);
+
 		$this->load->view('template/main', $data);
 	}
 
@@ -42,13 +45,19 @@ class TindakLanjut extends CI_Controller
 
 	public function getedit($id) // Form edit data
 	{
+		$this->load->model('Petugas_model');
+		$this->load->model('Laporankejahatan_model');
+
 		$data = array(
 			'title' => 'Edit Tindak Lanjut Kasus',
 			'tindaklanjut' => $this->TindakLanjut_model->getById($id),
+			'laporan' => $this->Laporankejahatan_model->getAll(),  // Tambahkan ini
+			'petugas' => $this->Petugas_model->getAll(),  // Tambahkan ini
 			'content' => 'tindaklanjut/edit_form'
 		);
 		$this->load->view('template/main', $data);
 	}
+
 
 	public function edit() // Menyimpan perubahan data
 	{

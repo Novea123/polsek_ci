@@ -14,7 +14,7 @@
 						<select name="id_laporan" class="form-control chosen-select" required>
 							<option selected disabled value="">-- Pilih Laporan --</option>
 							<?php foreach ($laporan as $l) : ?>
-								<option value="<?= $l->id_laporan ?>"><?= $l->judul_laporan ?></option>
+								<option value="<?= $l->id_laporan ?>"><?= $l->jenis_kejahatan ?></option>
 							<?php endforeach; ?>
 						</select>
 					</div>
@@ -37,11 +37,6 @@
 					<div class="mb-3">
 						<label for="jenis_tindakan">JENIS TINDAKAN <code>*</code></label>
 						<input class="form-control" type="text" name="jenis_tindakan" placeholder="Contoh: Penyelidikan, Penangkapan, dll" required />
-					</div>
-
-					<div class="mb-3">
-						<label for="hasil_tindakan">HASIL TINDAKAN</label>
-						<textarea class="form-control" name="hasil_tindakan" rows="3" placeholder="Deskripsi hasil tindakan" required></textarea>
 					</div>
 
 					<div class="mb-3">

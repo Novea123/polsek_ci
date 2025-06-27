@@ -1,48 +1,55 @@
 <?php
-		$data = array(
-			'pelanggaran' => $this->Pelanggaran_model->getAll()
-		);
+include 'lap_header.php';
 
-		$pdf = new FPDF('P', 'mm', 'A4');
-		$pdf->AddPage();
-		$pdf->SetFont('Times', 'B', 18);
-		$pdf->Image('./assets/img/polda.png', 30, 5, 24, 24);
-		$pdf->Cell(25);
-		$pdf->SetFont('Times', 'B', 20);
-		$pdf->Cell(0, 5, 'POLSEK BANJARMASIN UTARA', 0, 1, 'C');
-		$pdf->Cell(25);
-		$pdf->SetFont('Times', 'B', 15);
-		$pdf->Cell(0, 8, 'KECAMATAN BANJARMASIN UTARA', 0, 1, 'C');
-		$pdf->Cell(10);
-		$pdf->SetFont('Times', '', 10);
-		$pdf->Cell(0, 15, 'Alamat : JL.Brig Jend. Hasan Basri, Alalak Utara, Kec, Banjarmasin Utara, Kota Banjarmasin, Kalimantan Selatan 70123', 0, 1, 'C');
+$pdf->SetFont('Times', 'B', 18);
+$pdf->Cell(0, 10, 'LAPORAN DATA PELANGGARAN', 0, 1, 'C');
+$pdf->Ln(5); // spasi antar judul dan tabel
 
-		$pdf->SetLineWidth(1);
-		$pdf->Line(10, 36, 197, 36);
-		$pdf->SetLineWidth(0);
-		$pdf->Line(10, 37, 197, 37);
-		$pdf->Cell(30, 10, '', 0, 1);
+$pdf->SetFont('Times', 'B', 9);
+$pdf->Cell(10, 6, 'NO', 1, 0, 'C');                     // 10 mm
+$pdf->Cell(40, 6, 'Nama', 1, 0, 'C');                   // 40 mm
+$pdf->Cell(60, 6, 'Jenis Pelanggaran', 1, 0, 'C');      // 60 mm
+$pdf->Cell(30, 6, 'Tanggal', 1, 0, 'C');                // 30 mm
+$pdf->Cell(50, 6, 'Sanksi', 1, 1, 'C');                 // 50 mm
+// Total = 190 mm
 
-		// Header tabel
-		$pdf->SetFont('Times', 'B', 12);
-		$pdf->Cell(10, 10, 'No', 1, 0, 'C');
-		$pdf->Cell(40, 10, 'Nama Pelanggar', 1, 0, 'C');
-		$pdf->Cell(30, 10, 'NIK', 1, 0, 'C');
-		$pdf->Cell(50, 10, 'Jenis Pelanggaran', 1, 0, 'C');
-		$pdf->Cell(25, 10, 'Tanggal', 1, 0, 'C');
-		$pdf->Cell(35, 10, 'Status', 1, 1, 'C');
 
-		// Data pelanggaran
-		$pdf->SetFont('Times', '', 10);
-		$no = 1;
-		foreach ($data['pelanggaran'] as $row) {
-			$pdf->Cell(10, 10, $no++, 1, 0, 'C');
-			$pdf->Cell(40, 10, $row->nama_pelanggar, 1, 0);
-			$pdf->Cell(30, 10, $row->nik, 1, 0);
-			$pdf->Cell(50, 10, $row->jenis_pelanggaran, 1, 0);
-			$pdf->Cell(25, 10, date('d/m/Y', strtotime($row->tanggal)), 1, 0);
-			$pdf->Cell(35, 10, $row->status, 1, 1);
-		}
+// Ambil data dari database
+$i = 1;
+$data = $this->db->get('tbl_pelanggaran')->result_array();
 
-		$pdf->Output('laporan_pelanggaran.pdf', 'I');
-	
+foreach ($data as $d) {
+	$pdf->SetFont('Times', '', 9);
+	$pdf->Cell(10, 6, $i++, 1, 0);
+	$pdf->Cell(40, 6, $d['nama_pelanggar'], 1, 0);
+	$pdf->Cell(60, 6, $d['jenis_pelanggaran'], 1, 0);
+	$pdf->Cell(30, 6, date('d/m/Y', strtotime($d['tanggal'])), 1, 0);
+	$pdf->Cell(50, 6, $d['sanksi'], 1, 1);
+}
+
+$pdf->Ln(10); // Spasi setelah tabel
+
+// Tanda Tangan di kanan bawah
+$pdf->SetFont('Times', '', 10);
+$pdf->Cell(130); // Geser ke kanan (130mm dari kiri)
+$pdf->Cell(60, 6, 'Banjarmasin, ' . date('d M Y'), 0, 1, 'C');
+
+$pdf->Cell(130);
+$pdf->Cell(60, 6, 'Mengetahui,', 0, 1, 'C');
+
+$pdf->Cell(130);
+$pdf->Cell(60, 6, 'Kapolsek Banjarmasin Utara', 0, 1, 'C');
+
+$pdf->Ln(18); // Spasi untuk tanda tangan
+
+$pdf->Cell(130);
+$pdf->SetFont('Times', 'BU', 10); // BU = Bold + Underline
+$pdf->Cell(60, 6, '_____________________', 0, 1, 'C');
+
+$pdf->Cell(130);
+$pdf->SetFont('Times', '', 10);
+$pdf->Cell(60, 6, 'NIP: 123456789', 0, 1, 'C');
+
+
+
+$pdf->Output('laporan_pelanggaran.pdf', 'I');

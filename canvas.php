@@ -17,7 +17,7 @@
 				<img src="<?= base_url('assets/img/polsek.png') ?>" width="100" class="rounded" />
 			</div>
 			<div class="card-body login-card-body">
-				<h5 class="login-box-msg text-center">POLSEK BANJARMASIN UTARA</h5>
+				<h5 class="login-box-msg text-center">Sign in to start your session</h5>
 
 				<!-- Flash message -->
 				<?= $this->session->flashdata('message'); ?>
@@ -46,6 +46,9 @@
 						<button type="submit" class="btn btn-primary">Sign In</button>
 					</div>
 				</form>
+
+				<p class="mb-1"><a href="#">I forgot my password</a></p>
+				<p class="mb-0"><a href="#" class="text-center">Register a new membership</a></p>
 			</div>
 		</div>
 	</div>

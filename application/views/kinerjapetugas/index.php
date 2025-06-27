@@ -21,7 +21,7 @@
 			<?php endif; ?>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table table-striped table-bordered table-hover" id="tabelkinerja" width="100%" cellspacing="0">
+					<table class="table table-striped table-bordered table-hover text-center" id="tabelkinerja" width="100%" cellspacing="0">
 						<thead>
 							<tr>
 								<th>No.</th>
@@ -58,7 +58,8 @@
                                         <td>$k->rata_penangan</td>
                                         <td>$k->tersangka</td>
                                         <td>
-                                            <span class='badge badge-" . ($k->nilai_kinerja >= 80 ? 'success' : ($k->nilai_kinerja >= 60 ? 'warning' : 'danger')) . "'>
+                                            <span class='badge badge-" . ($k->nilai_kinerja >= 80 ? 'success' : ($k->nilai_kinerja >= 60 ? 'warning' : 'danger')) . " 
+											text-dark'>
                                                 $k->nilai_kinerja
                                             </span>
                                         </td>

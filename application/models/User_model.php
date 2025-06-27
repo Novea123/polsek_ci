@@ -3,10 +3,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class User_model extends CI_Model
 {
-	private $_table = 'user';
+    protected $_table = 'tbl_user';
 
-	public function get_by_email($email)
-	{
-		return $this->db->get_where($this->_table, ['email' => $email, 'is_active' => 1])->row_array();
-	}
+    public function get_by_username($username)
+    {
+        return $this->db->get_where($this->_table, ['username' => $username])->row();
+    }
 }

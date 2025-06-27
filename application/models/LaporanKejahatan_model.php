@@ -1,4 +1,5 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
+
 class LaporanKejahatan_model extends CI_Model
 {
 	protected $_table = 'tbl_laporan';
@@ -22,7 +23,6 @@ class LaporanKejahatan_model extends CI_Model
 			'deskripsi_kejadian' => htmlspecialchars($this->input->post('deskripsi_kejadian'), true),
 			'status' => htmlspecialchars($this->input->post('status'), true),
 			'bukti' => htmlspecialchars($this->input->post('bukti'), true),
-
 		);
 		return $this->db->insert($this->_table, $data);
 	}
@@ -54,7 +54,21 @@ class LaporanKejahatan_model extends CI_Model
 	{
 		$this->db->where('id_laporan', $id)->delete($this->_table);
 		if ($this->db->affected_rows() > 0) {
-			$this->session->set_flashdata("success", "Data Petugas Berhasil DiDelete");
+			$this->session->set_flashdata("success", "Data Laporan Berhasil Dihapus");
 		}
+	}
+
+	// Tambahan untuk dashboard
+	public function count_all()
+	{
+		return $this->db->count_all($this->_table);
+	}
+
+	public function get_latest($limit = 5)
+	{
+		return $this->db->order_by('tanggal_kejadian', 'DESC')
+			->limit($limit)
+			->get($this->_table)
+			->result();
 	}
 }

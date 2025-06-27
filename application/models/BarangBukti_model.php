@@ -20,7 +20,6 @@ class BarangBukti_model extends CI_Model
         'tanggal_ditemukan'=> $this->input->post('tanggal_ditemukan', true),
         'lokasi_penyimpanan'=> $this->input->post('lokasi_penyimpanan', true),
         'status_barang'     => $this->input->post('status_barang', true),
-        'penanganan'        => '', // jika belum ada input ini
         'bukti'             => $this->uploadBukti() // jika ada upload file
     );
 
@@ -43,7 +42,6 @@ class BarangBukti_model extends CI_Model
 			'tanggal_ditemukan' => $this->input->post('tanggal_ditemukan'),
 			'lokasi_penyimpanan' => htmlspecialchars($this->input->post('lokasi_penyimpanan'), true),
 			'status_barang' => htmlspecialchars($this->input->post('status_barang'), true),
-			'penanganan' => htmlspecialchars($this->input->post('penanganan'), true)
 		);
 
 		// Jika ada file bukti baru diupload

@@ -21,11 +21,12 @@
 			<?php endif; ?>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table table-striped table-bordered table-hover" id="tabelTahanan" width="100%" cellspacing="0">
+					<table class="table table-striped table-bordered table-hover text-center" id="tabelTahanan" width="100%" cellspacing="0">
 						<thead>
 							<tr>
 								<th>No.</th>
 								<th>Nama Tahanan</th>
+								<th>Tanggal Lahir</th>
 								<th>Jenis Kelamin</th>
 								<th>Jenis Kejahatan</th>
 								<th>Tanggal Ditangkap</th>
@@ -40,6 +41,7 @@
 								echo "<tr>
                                         <td>$no</td>
                                         <td>$row->nama_orang</td>
+										<td>" . date('d/m/Y', strtotime($row->tanggal_lahir)) . "</td>
                                         <td>$row->jenis_kelamin</td>
                                         <td>$row->jenis_kejahatan</td>
                                         <td>" . date('d/m/Y', strtotime($row->tanggal_ditangkap)) . "</td>

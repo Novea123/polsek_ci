@@ -33,13 +33,48 @@ class Laporan extends CI_Controller
 		$pdf->SetFont('Times', '', 10);
 		$pdf->Output('laporan_header_only.pdf', 'I');
 	}
-	public function laporan()
+	public function pelapor()
 	{
 		$this->load->view('laporan/pelapor');
 	}
 
-	public function laporan_pel()
+	public function pelanggaran()
 	{
-		$this->load->view('laporan/pelapor_pel');
+		$this->load->view('laporan/pelanggaran');
+	}
+
+	public function kejahatan()
+	{
+		$this->load->view('laporan/kejahatan');
+	}
+
+	public function tahanan()
+	{
+		$this->load->view('laporan/tahanan');
+	}
+
+	public function tindaklanjut()
+	{
+		$this->load->view('laporan/tindaklanjut');
+	}
+
+	public function kinerja()
+	{
+		$this->load->view('laporan/kinerja');
+	}
+
+	public function monitoring()
+	{
+		$this->load->view('laporan/monitoring');
+	}
+
+	public function barangbukti()
+	{
+		$this->load->view('laporan/barangbukti');
+	}
+
+	public function rekapkasus()
+	{
+		$this->load->view('laporan/rekapkasus');
 	}
 }

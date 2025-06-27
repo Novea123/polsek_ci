@@ -28,7 +28,7 @@
       				data-accordion="false">
       				<li class="nav-header">DASHBOARD</li>
       				<li class="nav-item">
-      					<a href="../generate/theme.html" class="nav-link">
+      					<a href="<?php echo site_url('dashboard'); ?>" class="nav-link">
       						<i class="nav-icon bi bi-palette"></i>
       						<p>Dashboard</p>
       					</a>
@@ -117,63 +117,58 @@
       					</a>
       					<ul class="nav nav-treeview">
       						<li class="nav-item">
-      							<a href="../examples/lockscreen.html" class="nav-link">
+      							<a href="<?php echo site_url('laporan/pelanggaran'); ?>" target="_blank" class="nav-link">
       								<i class="nav-icon bi bi-circle"></i>
       								<p>Laporan Pelanggaran</p>
       							</a>
       						</li>
       						<li class="nav-item">
-      							<a href="<?php echo site_url('laporan/laporan'); ?>" class="nav-link">
+      							<a href="<?php echo site_url('laporan/pelapor'); ?>" target="_blank" class="nav-link">
       								<i class="nav-icon bi bi-circle"></i>
       								<p>Laporan Pelapor</p>
       							</a>
       						</li>
       						<li class="nav-item">
-      							<a href="../examples/lockscreen.html" class="nav-link">
+      							<a href="<?php echo site_url('laporan/kejahatan'); ?>" target="_blank" class="nav-link">
       								<i class="nav-icon bi bi-circle"></i>
-      								<p>Laporan Kejahatan</p>
+      								<p>Laporan Data Kejahatan</p>
       							</a>
       						</li>
       						<li class="nav-item">
-      							<a href="../examples/lockscreen.html" class="nav-link">
+      							<a href="<?php echo site_url('laporan/tahanan'); ?>" target="_blank" class="nav-link">
       								<i class="nav-icon bi bi-circle"></i>
-      								<p>Laporan Tahanan</p>
+      								<p>Laporan Data Tahanan</p>
+      							</a>
+      						</li>
+
+      						<li class="nav-item">
+      							<a href="<?php echo site_url('laporan/tindaklanjut'); ?>" target="_blank" class="nav-link">
+      								<i class="nav-icon bi bi-circle"></i>
+      								<p>Laporan Data Tindak Lanjut</p>
       							</a>
       						</li>
       						<li class="nav-item">
-      							<a href="../examples/lockscreen.html" class="nav-link">
-      								<i class="nav-icon bi bi-circle"></i>
-      								<p>Laporan Barang Bukti</p>
-      							</a>
-      						</li>
-      						<li class="nav-item">
-      							<a href="../examples/lockscreen.html" class="nav-link">
-      								<i class="nav-icon bi bi-circle"></i>
-      								<p>Laporan Tindak Lanjut</p>
-      							</a>
-      						</li>
-      						<li class="nav-item">
-      							<a href="../examples/lockscreen.html" class="nav-link">
+      							<a href="<?php echo site_url('laporan/kinerja'); ?>" target="_blank" class="nav-link">
       								<i class="nav-icon bi bi-circle"></i>
       								<p>Laporan Kinerja Petugas</p>
       							</a>
       						</li>
       						<li class="nav-item">
-      							<a href="../examples/lockscreen.html" class="nav-link">
+      							<a href="<?php echo site_url('laporan/monitoring'); ?>" target="_blank" class="nav-link">
       								<i class="nav-icon bi bi-circle"></i>
-      								<p>Laporan Kronologi Kasus</p>
+      								<p>Laporan Monitoring Kasus</p>
       							</a>
       						</li>
       						<li class="nav-item">
-      							<a href="../examples/lockscreen.html" class="nav-link">
+      							<a href="<?php echo site_url('laporan/barangbukti'); ?>" target="_blank" class="nav-link">
       								<i class="nav-icon bi bi-circle"></i>
       								<p>Laporan Barang Bukti</p>
       							</a>
       						</li>
       						<li class="nav-item">
-      							<a href="../examples/lockscreen.html" class="nav-link">
+      							<a href="<?php echo site_url('laporan/rekapkasus'); ?>" target="_blank" class="nav-link">
       								<i class="nav-icon bi bi-circle"></i>
-      								<p>Laporan Kasus</p>
+      								<p>Laporan Rekap Kasus</p>
       							</a>
       						</li>
       					</ul>

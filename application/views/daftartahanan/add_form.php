@@ -33,8 +33,9 @@
 					</div>
 
 					<div class="mb-3">
-						<label for="tanggal_lahir">Tanggal Lahir<code>*</code></label>
-						<input class="form-control" type="date" name="tanggal_lahir" required />
+						<label for="tanggal_lahir">TANGGAL LAHIR<code>*</code></label>
+						<input class="form-control" type="date" name="tanggal_lahir" value="<?= set_value('tanggal_lahir') ?>" required />
+
 					</div>
 
 					<div class="mb-3">

@@ -39,7 +39,7 @@
 							foreach ($tindaklanjut as $row) {
 								echo "<tr>
 									<td>$no</td>
-									<td>$row->judul_laporan</td>
+									<td>$row->jenis_kejahatan</td>
 									<td>$row->nama_petugas</td>
 									<td>" . date('d/m/Y', strtotime($row->tanggal_tindak_kasus)) . "</td>
 									<td>$row->jenis_tindakan</td>

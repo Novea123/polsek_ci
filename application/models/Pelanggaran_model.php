@@ -1,5 +1,5 @@
-<?php
-defined('BASEPATH') or exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
+
 class Pelanggaran_model extends CI_Model
 {
 	protected $_table = 'tbl_pelanggaran';
@@ -20,7 +20,6 @@ class Pelanggaran_model extends CI_Model
 
 	public function save()
 	{
-
 		$data = array(
 			'nama_pelanggar' => htmlspecialchars($this->input->post('nama_pelanggar'), true),
 			'nik' => htmlspecialchars($this->input->post('nik'), true),
@@ -31,7 +30,7 @@ class Pelanggaran_model extends CI_Model
 			'sanksi' => htmlspecialchars($this->input->post('sanksi'), true),
 			'status' => $this->input->post('status'),
 			'id_petugas' => htmlspecialchars($this->input->post('id_petugas'), true),
-			'bukti' => $this->uploadBukti() // Fungsi untuk handle upload bukti
+			'bukti' => $this->uploadBukti()
 		);
 		return $this->db->insert($this->_table, $data);
 	}
@@ -56,7 +55,6 @@ class Pelanggaran_model extends CI_Model
 			'id_petugas' => htmlspecialchars($this->input->post('id_petugas'), true)
 		);
 
-		// Jika ada file bukti baru diupload
 		if (!empty($_FILES['bukti']['name'])) {
 			$data['bukti'] = $this->uploadBukti();
 		}
@@ -66,7 +64,6 @@ class Pelanggaran_model extends CI_Model
 
 	public function delete($id)
 	{
-		// Hapus file bukti terlebih dahulu jika ada
 		$pelanggaran = $this->getById($id);
 		if ($pelanggaran->bukti != null) {
 			$file_path = './uploads/bukti/' . $pelanggaran->bukti;
@@ -85,28 +82,33 @@ class Pelanggaran_model extends CI_Model
 	{
 		$config['upload_path'] = './uploads/bukti/';
 		$config['allowed_types'] = 'jpg|jpeg|png|pdf';
-		$config['max_size'] = 4096; // 4MB
-		$config['file_name'] = 'bukti_' . time(); // Nama file unik
+		$config['max_size'] = 4096;
+		$config['file_name'] = 'bukti_' . time();
 
 		$this->load->library('upload', $config);
 
 		if ($this->upload->do_upload('bukti')) {
 			return $this->upload->data('file_name');
 		} else {
-			// Jika upload gagal, kembalikan null atau bukti lama (untuk edit)
 			return $this->input->post('old_bukti') ?? null;
 		}
 	}
 
-	// Fungsi tambahan untuk mendapatkan data dengan filter tertentu
 	public function getByStatus($status)
 	{
 		return $this->db->get_where($this->_table, ['status' => $status])->result();
 	}
 
-	// Fungsi untuk menghitung total pelanggaran
 	public function countAll()
 	{
 		return $this->db->count_all($this->_table);
+	}
+
+	public function get_latest($limit = 5)
+	{
+		return $this->db->order_by('tanggal', 'DESC')
+			->limit($limit)
+			->get($this->_table)
+			->result();
 	}
 }

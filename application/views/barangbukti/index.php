@@ -21,7 +21,7 @@
 			<?php endif; ?>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table table-striped table-bordered table-hover" id="tabelBarangBukti" width="100%" cellspacing="0">
+					<table class="table table-striped table-bordered table-hover text-center" id="tabelBarangBukti" width="100%" cellspacing="0">
 						<thead>
 							<tr>
 								<th>No.</th>
@@ -41,7 +41,7 @@
                                         <td>$no</td>
                                         <td>$row->id_laporan</td>
                                         <td>$row->jenis_barang_bukti</td>
-                                        <td>" . substr($row->deskripsi, 0, 50) . "...</td>
+                                        <td class='text-start'>" . substr($row->deskripsi, 0, 50) . "...</td>
                                         <td>" . date('d/m/Y', strtotime($row->tanggal_ditemukan)) . "</td>
                                         <td>$row->status_barang</td>
                                         <td>
